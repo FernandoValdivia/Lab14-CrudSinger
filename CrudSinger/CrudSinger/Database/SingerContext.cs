@@ -1,9 +1,6 @@
 ﻿using CrudSinger.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Xamarin.Essentials;
 
 namespace CrudSinger.Database

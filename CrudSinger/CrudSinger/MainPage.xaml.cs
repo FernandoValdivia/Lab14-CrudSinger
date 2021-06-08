@@ -1,12 +1,7 @@
 ﻿using CrudSinger.Models;
 using CrudSinger.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CrudSinger
@@ -35,9 +30,7 @@ namespace CrudSinger
             string ActiveSrt = ActiveFmt.ToString();
             string ActiveUpt = await DisplayPromptAsync("Active (True/False)", ActiveSrt);
 
-            //no funca uu
             singerModel.NameSingerModel = NameUpt;
-
             string format = "dd/MM/yyyy";
             DateTime BirthFmtDt = DateTime.ParseExact(BirthUpt, format, CultureInfo.InvariantCulture);
             singerModel.BirthSingerModel = BirthFmtDt;

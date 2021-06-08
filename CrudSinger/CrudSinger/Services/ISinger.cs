@@ -1,7 +1,5 @@
 ﻿using CrudSinger.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CrudSinger.Services
@@ -14,6 +12,5 @@ namespace CrudSinger.Services
         Task<bool> Update(SingerModel singerModel);
         Task<bool> Delete(SingerModel singerModel);
         Task<bool> DeleteAllSingers();
-
     }
 }
