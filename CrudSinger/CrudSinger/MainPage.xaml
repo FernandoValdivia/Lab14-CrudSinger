@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrudSinger.MainPage"
+             xmlns:viewModel="clr-namespace:CrudSinger.ViewModels">
+
+    <ContentPage.BindingContext>
+        <viewModel:MainViewModel></viewModel:MainViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout Padding="15">
+        <Label Text="Id"/>
+        <Entry Placeholder="Id" Text="{Binding IdSingerP}" />
+        <Label Text="Name Singer"/>
+        <Entry Placeholder="Name Singer" Text="{Binding NameSingerP}" />
+        <Label Text="BirthDate"/>
+        <DatePicker Date="{Binding BirthSingerP}"/>
+        <Label Text="Is Active?"/>
+        <CheckBox IsChecked="{Binding ActiveP}"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button CornerRadius="15" Command="{Binding InsertRowCommand}" Text="Add" BackgroundColor="#35C035" FontAttributes="Bold" TextColor="White"/>
+            <Button CornerRadius="15" Command="{Binding DeleteAllRowCommand}" Text="Delete All" BackgroundColor="DarkRed" FontAttributes="Bold" TextColor="White"/>
+        </StackLayout>
+        
+        <ListView ItemsSource="{Binding ListSingers}" HasUnevenRows="True" BackgroundColor="WhiteSmoke">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Id: " FontAttributes="Bold" />
+                                    <Label Text="{Binding IdSingerModel}" TextColor="Black" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Name: " FontAttributes="Bold"/>
+                                    <Label Text="{Binding NameSingerModel}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Birth: " FontAttributes="Bold"/>
+                                    <Label Text="{Binding BirthSingerModel}" TextColor="Black" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Is Active: " FontAttributes="Bold"/>
+                                    <CheckBox IsChecked="{Binding ActiveModel}" IsEnabled="False"/>
+                                </StackLayout>
+                            </StackLayout>
+                            
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="UpdateRow_Tapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                <SwipeGestureRecognizer Direction="Right" Swiped="DeleteRow_Swiped" CommandParameter="{Binding .}"></SwipeGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
