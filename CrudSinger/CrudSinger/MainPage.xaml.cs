@@ -31,10 +31,14 @@ namespace CrudSinger
             string ActiveUpt = await DisplayPromptAsync("Active (True/False)", ActiveSrt);
 
             singerModel.NameSingerModel = NameUpt;
+
+            //Convertir de String a Date
             string format = "dd/MM/yyyy";
             DateTime BirthFmtDt = DateTime.ParseExact(BirthUpt, format, CultureInfo.InvariantCulture);
             singerModel.BirthSingerModel = BirthFmtDt;
-            bool ActiveFmtBl = System.Convert.ToBoolean(ActiveSrt);
+
+            //Convertir de String a Boolean
+            bool ActiveFmtBl = System.Convert.ToBoolean(ActiveUpt);
             Console.WriteLine(ActiveFmtBl);
             singerModel.ActiveModel = ActiveFmtBl;
 
